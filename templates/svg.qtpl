@@ -1,0 +1,87 @@
+{% import "github.com/doctor-fate/mskix/device" %}
+
+{% code
+type RectangleConfiguration struct {
+	Width, Height int
+	Style         string
+}
+
+type TextConfiguration struct {
+	FontSize int
+}
+
+type ArrowConfiguration struct {
+	HorizontalLength               int
+	HorizontalShift, VerticalShift int
+	Style                          string
+}
+
+type Configuration struct {
+	Width, Height int
+	RC            RectangleConfiguration
+	TC            TextConfiguration
+	AC            ArrowConfiguration
+}
+
+type Translate struct {
+    Horizontal, Vertical int
+}
+%}
+
+{% func Header(configuration Configuration) %}<?xml version="1.0"?>
+<svg width="{%d configuration.Width %}" height="{%d configuration.Width %}" xmlns="http://www.w3.org/2000/svg">
+{% endfunc %}
+
+{% func Title(id device.ID) %}
+<text x="55%" y="50" text-anchor="middle" font-size="44">{%s string(id) %}</text>
+{% endfunc %}
+
+{% func RecordRight(record device.Record, translate Translate, configuration Configuration) %}
+<g transform="translate({%d translate.Horizontal %},{%d translate.Vertical %})">
+    <rect width="{%d configuration.RC.Width %}" height="{%d configuration.RC.Height %}" style="{%s configuration.RC.Style %}"/>
+    <svg width="{%d configuration.RC.Width %}" height="{%d configuration.RC.Height %}">
+        <text x="50%" y="70%" text-anchor="middle" font-size="{%d configuration.TC.FontSize %}">{%s record.Port %}</text>
+    </svg>
+    {% code
+        var (
+            h = configuration.RC.Height / 2
+            w = configuration.AC.HorizontalLength - configuration.AC.HorizontalShift
+        )
+    %}
+    <g transform="translate({%d configuration.RC.Width %},0)">
+        <line x1="0" y1="{%d h %}" x2="{%d configuration.AC.HorizontalLength %}" y2="{%d h %}" style="{%s configuration.AC.Style %}"/>
+        <line x1="{%d configuration.AC.HorizontalLength %}" y1="{%d h %}" x2="{%d w %}" y2="{%d h - configuration.AC.VerticalShift %}" style="{%s configuration.AC.Style %}"/>
+        <line x1="{%d configuration.AC.HorizontalLength %}" y1="{%d h %}" x2="{%d w %}" y2="{%d h + configuration.AC.VerticalShift %}" style="{%s configuration.AC.Style %}"/>
+        <svg width="{%d configuration.AC.HorizontalLength %}" height="{%d configuration.RC.Height %}">
+            <text x="2%" y="40%" text-anchor="start" font-size="{%d configuration.TC.FontSize %}">{%s record.Description %}</text>
+            <text x="95%" y="40%" text-anchor="end" font-size="{%d configuration.TC.FontSize %}">{%s record.VLAN %}</text>
+        </svg>
+    </g>
+</g>
+{% endfunc %}
+
+{% func RecordLeft(record device.Record, translate Translate, configuration Configuration) %}
+<g transform="translate({%d translate.Horizontal %},{%d translate.Vertical %})">
+    <rect width="{%d configuration.RC.Width %}" height="{%d configuration.RC.Height %}" style="{%s configuration.RC.Style %}"/>
+    <svg width="{%d configuration.RC.Width %}" height="{%d configuration.RC.Height %}">
+        <text x="50%" y="70%" text-anchor="middle" font-size="{%d configuration.TC.FontSize %}">{%s record.Port %}</text>
+    </svg>
+    {% code
+        var (
+            h = configuration.RC.Height / 2
+            w = configuration.AC.HorizontalLength - configuration.AC.HorizontalShift
+        )
+    %}
+    <line x1="0" y1="{%d h %}" x2="{%d -configuration.AC.HorizontalLength %}" y2="{%d h %}" style="{%s configuration.AC.Style %}"/>
+    <line x1="{%d -configuration.AC.HorizontalLength %}" y1="{%d h %}" x2="{%d -w %}" y2="{%d h - configuration.AC.VerticalShift %}" style="{%s configuration.AC.Style %}"/>
+    <line x1="{%d -configuration.AC.HorizontalLength %}" y1="{%d h %}" x2="{%d -w %}" y2="{%d h + configuration.AC.VerticalShift %}" style="{%s configuration.AC.Style %}"/>
+    <g transform="translate({%d -configuration.AC.HorizontalLength %},0)">
+        <svg width="{%d configuration.AC.HorizontalLength %}" height="{%d configuration.RC.Height %}">
+            <text x="98%" y="40%" text-anchor="end" font-size="{%d configuration.TC.FontSize %}">{%s record.Description %}</text>
+            <text x="5%" y="40%" text-anchor="start" font-size="{%d configuration.TC.FontSize %}">{%s record.VLAN %}</text>
+        </svg>
+    </g>
+</g>
+{% endfunc %}
+
+{% func Footer() %}</svg>{% endfunc %}
