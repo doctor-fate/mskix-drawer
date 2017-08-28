@@ -35,7 +35,7 @@ type Translate struct {
 {% func Title(id device.ID, configuration Configuration) %}
 <g transform="translate({%d configuration.Padding[3] %},{%d configuration.Padding[0] %})">
     <svg width="{%d configuration.Width - (configuration.Padding[1] + configuration.Padding[3]) %}" height="{%d configuration.Title.FontSize %}">
-        <text x="50%" y="95%" alignment-baseline="middle" text-anchor="middle" font-size="{%d configuration.Title.FontSize %}">{%s string(id) %}</text>
+        <text x="50%" y="95%" text-anchor="middle" font-size="{%d configuration.Title.FontSize %}">{%s string(id) %}</text>
     </svg>
 </g>
 {% endfunc %}

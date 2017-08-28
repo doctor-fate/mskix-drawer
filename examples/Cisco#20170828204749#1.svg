@@ -3,7 +3,7 @@
 
     <g transform="translate(25,15)">
         <svg width="974" height="44">
-            <text x="50%" y="95%" alignment-baseline="middle" text-anchor="middle" font-size="44">Cisco</text>
+            <text x="50%" y="95%" text-anchor="middle" font-size="44">Cisco</text>
         </svg>
     </g>
 

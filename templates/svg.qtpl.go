@@ -112,7 +112,7 @@ func StreamTitle(qw422016 *qt422016.Writer, id device.ID, configuration Configur
 	qw422016.N().D(configuration.Title.FontSize)
 	//line svg.qtpl:37
 	qw422016.N().S(`">
-        <text x="50%" y="95%" alignment-baseline="middle" text-anchor="middle" font-size="`)
+        <text x="50%" y="95%" text-anchor="middle" font-size="`)
 	//line svg.qtpl:38
 	qw422016.N().D(configuration.Title.FontSize)
 	//line svg.qtpl:38
