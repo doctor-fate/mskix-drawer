@@ -18,9 +18,11 @@ type ArrowConfiguration struct {
 
 type Configuration struct {
 	Width, Height int
-	RC            RectangleConfiguration
-	TC            TextConfiguration
-	AC            ArrowConfiguration
+	Padding       [4]int
+	Title         TextConfiguration
+	Rectangle            RectangleConfiguration
+	Text            TextConfiguration
+	Arrow            ArrowConfiguration
 }
 
 type Translate struct {
@@ -32,55 +34,65 @@ type Translate struct {
 <svg width="{%d configuration.Width %}" height="{%d configuration.Width %}" xmlns="http://www.w3.org/2000/svg">
 {% endfunc %}
 
-{% func Title(id device.ID) %}
-<text x="55%" y="50" text-anchor="middle" font-size="44">{%s string(id) %}</text>
+{% func Title(id device.ID, configuration Configuration) %}
+<g transform="translate({%d configuration.Padding[3] %},{%d configuration.Padding[0] %})">
+    <svg width="{%d configuration.Width - (configuration.Padding[1] + configuration.Padding[3]) %}" height="{%d configuration.Title.FontSize %}">
+        <text x="50%" y="100%" alignment-baseline="middle" text-anchor="middle" font-size="{%d configuration.Title.FontSize %}">{%s string(id) %}</text>
+    </svg>
+</g>
 {% endfunc %}
 
 {% func RecordRight(record device.Record, translate Translate, configuration Configuration) %}
 <g transform="translate({%d translate.Horizontal %},{%d translate.Vertical %})">
-    <rect width="{%d configuration.RC.Width %}" height="{%d configuration.RC.Height %}" style="{%s configuration.RC.Style %}"/>
-    <svg width="{%d configuration.RC.Width %}" height="{%d configuration.RC.Height %}">
-        <text x="50%" y="70%" text-anchor="middle" font-size="{%d configuration.TC.FontSize %}">{%s record.Port %}</text>
+    <rect width="{%d configuration.Rectangle.Width %}" height="{%d configuration.Rectangle.Height %}" style="{%s configuration.Rectangle.Style %}"/>
+    <svg width="{%d configuration.Rectangle.Width %}" height="{%d configuration.Rectangle.Height %}">
+        <text x="50%" y="70%" text-anchor="middle" font-size="{%d configuration.Text.FontSize %}">{%s record.Port %}</text>
     </svg>
     {% code
         var (
-            h = configuration.RC.Height / 2
-            w = configuration.AC.HorizontalLength - configuration.AC.HorizontalShift
+            h = configuration.Rectangle.Height / 2
+            w = configuration.Arrow.HorizontalLength - configuration.Arrow.HorizontalShift
         )
     %}
-    <g transform="translate({%d configuration.RC.Width %},0)">
-        <line x1="0" y1="{%d h %}" x2="{%d configuration.AC.HorizontalLength %}" y2="{%d h %}" style="{%s configuration.AC.Style %}"/>
-        <line x1="{%d configuration.AC.HorizontalLength %}" y1="{%d h %}" x2="{%d w %}" y2="{%d h - configuration.AC.VerticalShift %}" style="{%s configuration.AC.Style %}"/>
-        <line x1="{%d configuration.AC.HorizontalLength %}" y1="{%d h %}" x2="{%d w %}" y2="{%d h + configuration.AC.VerticalShift %}" style="{%s configuration.AC.Style %}"/>
-        <svg width="{%d configuration.AC.HorizontalLength %}" height="{%d configuration.RC.Height %}">
-            <text x="2%" y="40%" text-anchor="start" font-size="{%d configuration.TC.FontSize %}">{%s record.Description %}</text>
-            <text x="95%" y="40%" text-anchor="end" font-size="{%d configuration.TC.FontSize %}">{%s record.VLAN %}</text>
-        </svg>
-    </g>
+
+    {% if record.Description.IsValid() %}
+        <g transform="translate({%d configuration.Rectangle.Width %},0)">
+            <line x1="0" y1="{%d h %}" x2="{%d configuration.Arrow.HorizontalLength %}" y2="{%d h %}" style="{%s configuration.Arrow.Style %}"/>
+            <line x1="{%d configuration.Arrow.HorizontalLength %}" y1="{%d h %}" x2="{%d w %}" y2="{%d h - configuration.Arrow.VerticalShift %}" style="{%s configuration.Arrow.Style %}"/>
+            <line x1="{%d configuration.Arrow.HorizontalLength %}" y1="{%d h %}" x2="{%d w %}" y2="{%d h + configuration.Arrow.VerticalShift %}" style="{%s configuration.Arrow.Style %}"/>
+            <svg width="{%d configuration.Arrow.HorizontalLength %}" height="{%d configuration.Rectangle.Height %}">
+                <text x="2%" y="40%" text-anchor="start" font-size="{%d configuration.Text.FontSize %}">{%s record.Description.Get() %}</text>
+                <text x="95%" y="40%" text-anchor="end" font-size="{%d configuration.Text.FontSize %}">{%s record.VLAN.Get() %}</text>
+            </svg>
+        </g>
+    {% endif %}
 </g>
 {% endfunc %}
 
 {% func RecordLeft(record device.Record, translate Translate, configuration Configuration) %}
 <g transform="translate({%d translate.Horizontal %},{%d translate.Vertical %})">
-    <rect width="{%d configuration.RC.Width %}" height="{%d configuration.RC.Height %}" style="{%s configuration.RC.Style %}"/>
-    <svg width="{%d configuration.RC.Width %}" height="{%d configuration.RC.Height %}">
-        <text x="50%" y="70%" text-anchor="middle" font-size="{%d configuration.TC.FontSize %}">{%s record.Port %}</text>
+    <rect width="{%d configuration.Rectangle.Width %}" height="{%d configuration.Rectangle.Height %}" style="{%s configuration.Rectangle.Style %}"/>
+    <svg width="{%d configuration.Rectangle.Width %}" height="{%d configuration.Rectangle.Height %}">
+        <text x="50%" y="70%" text-anchor="middle" font-size="{%d configuration.Text.FontSize %}">{%s record.Port %}</text>
     </svg>
     {% code
         var (
-            h = configuration.RC.Height / 2
-            w = configuration.AC.HorizontalLength - configuration.AC.HorizontalShift
+            h = configuration.Rectangle.Height / 2
+            w = configuration.Arrow.HorizontalLength - configuration.Arrow.HorizontalShift
         )
     %}
-    <line x1="0" y1="{%d h %}" x2="{%d -configuration.AC.HorizontalLength %}" y2="{%d h %}" style="{%s configuration.AC.Style %}"/>
-    <line x1="{%d -configuration.AC.HorizontalLength %}" y1="{%d h %}" x2="{%d -w %}" y2="{%d h - configuration.AC.VerticalShift %}" style="{%s configuration.AC.Style %}"/>
-    <line x1="{%d -configuration.AC.HorizontalLength %}" y1="{%d h %}" x2="{%d -w %}" y2="{%d h + configuration.AC.VerticalShift %}" style="{%s configuration.AC.Style %}"/>
-    <g transform="translate({%d -configuration.AC.HorizontalLength %},0)">
-        <svg width="{%d configuration.AC.HorizontalLength %}" height="{%d configuration.RC.Height %}">
-            <text x="98%" y="40%" text-anchor="end" font-size="{%d configuration.TC.FontSize %}">{%s record.Description %}</text>
-            <text x="5%" y="40%" text-anchor="start" font-size="{%d configuration.TC.FontSize %}">{%s record.VLAN %}</text>
-        </svg>
-    </g>
+
+    {% if record.Description.IsValid() %}
+        <line x1="0" y1="{%d h %}" x2="{%d -configuration.Arrow.HorizontalLength %}" y2="{%d h %}" style="{%s configuration.Arrow.Style %}"/>
+        <line x1="{%d -configuration.Arrow.HorizontalLength %}" y1="{%d h %}" x2="{%d -w %}" y2="{%d h - configuration.Arrow.VerticalShift %}" style="{%s configuration.Arrow.Style %}"/>
+        <line x1="{%d -configuration.Arrow.HorizontalLength %}" y1="{%d h %}" x2="{%d -w %}" y2="{%d h + configuration.Arrow.VerticalShift %}" style="{%s configuration.Arrow.Style %}"/>
+        <g transform="translate({%d -configuration.Arrow.HorizontalLength %},0)">
+            <svg width="{%d configuration.Arrow.HorizontalLength %}" height="{%d configuration.Rectangle.Height %}">
+                <text x="98%" y="40%" text-anchor="end" font-size="{%d configuration.Text.FontSize %}">{%s record.Description.Get() %}</text>
+                <text x="5%" y="40%" text-anchor="start" font-size="{%d configuration.Text.FontSize %}">{%s record.VLAN.Get() %}</text>
+            </svg>
+        </g>
+    {% endif %}
 </g>
 {% endfunc %}
 
