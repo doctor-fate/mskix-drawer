@@ -23,7 +23,6 @@ var (
 //line svg.qtpl:4
 type RectangleConfiguration struct {
 	Width, Height int
-	Style         string
 }
 
 type TextConfiguration struct {
@@ -33,7 +32,6 @@ type TextConfiguration struct {
 type ArrowConfiguration struct {
 	HorizontalLength               int
 	HorizontalShift, VerticalShift int
-	Style                          string
 }
 
 type Configuration struct {
@@ -49,519 +47,559 @@ type Translate struct {
 	Horizontal, Vertical int
 }
 
-//line svg.qtpl:33
+//line svg.qtpl:31
 func StreamHeader(qw422016 *qt422016.Writer, configuration Configuration) {
-	//line svg.qtpl:33
+	//line svg.qtpl:31
 	qw422016.N().S(`<?xml version="1.0"?>
 <svg width="`)
-	//line svg.qtpl:34
+	//line svg.qtpl:32
 	qw422016.N().D(configuration.Width)
-	//line svg.qtpl:34
+	//line svg.qtpl:32
 	qw422016.N().S(`" height="`)
-	//line svg.qtpl:34
+	//line svg.qtpl:32
 	qw422016.N().D(configuration.Width)
-	//line svg.qtpl:34
+	//line svg.qtpl:32
 	qw422016.N().S(`" xmlns="http://www.w3.org/2000/svg">
 `)
-	//line svg.qtpl:35
+	//line svg.qtpl:33
 }
 
-//line svg.qtpl:35
+//line svg.qtpl:33
 func WriteHeader(qq422016 qtio422016.Writer, configuration Configuration) {
-	//line svg.qtpl:35
+	//line svg.qtpl:33
 	qw422016 := qt422016.AcquireWriter(qq422016)
-	//line svg.qtpl:35
+	//line svg.qtpl:33
 	StreamHeader(qw422016, configuration)
-	//line svg.qtpl:35
+	//line svg.qtpl:33
 	qt422016.ReleaseWriter(qw422016)
-	//line svg.qtpl:35
+	//line svg.qtpl:33
+}
+
+//line svg.qtpl:33
+func Header(configuration Configuration) string {
+	//line svg.qtpl:33
+	qb422016 := qt422016.AcquireByteBuffer()
+	//line svg.qtpl:33
+	WriteHeader(qb422016, configuration)
+	//line svg.qtpl:33
+	qs422016 := string(qb422016.B)
+	//line svg.qtpl:33
+	qt422016.ReleaseByteBuffer(qb422016)
+	//line svg.qtpl:33
+	return qs422016
+	//line svg.qtpl:33
 }
 
 //line svg.qtpl:35
-func Header(configuration Configuration) string {
-	//line svg.qtpl:35
-	qb422016 := qt422016.AcquireByteBuffer()
-	//line svg.qtpl:35
-	WriteHeader(qb422016, configuration)
-	//line svg.qtpl:35
-	qs422016 := string(qb422016.B)
-	//line svg.qtpl:35
-	qt422016.ReleaseByteBuffer(qb422016)
-	//line svg.qtpl:35
-	return qs422016
-	//line svg.qtpl:35
-}
-
-//line svg.qtpl:37
 func StreamTitle(qw422016 *qt422016.Writer, id device.ID, configuration Configuration) {
-	//line svg.qtpl:37
+	//line svg.qtpl:35
 	qw422016.N().S(`
 <g transform="translate(`)
-	//line svg.qtpl:38
+	//line svg.qtpl:36
 	qw422016.N().D(configuration.Padding[3])
-	//line svg.qtpl:38
+	//line svg.qtpl:36
 	qw422016.N().S(`,`)
-	//line svg.qtpl:38
+	//line svg.qtpl:36
 	qw422016.N().D(configuration.Padding[0])
-	//line svg.qtpl:38
+	//line svg.qtpl:36
 	qw422016.N().S(`)">
     <svg width="`)
-	//line svg.qtpl:39
+	//line svg.qtpl:37
 	qw422016.N().D(configuration.Width - (configuration.Padding[1] + configuration.Padding[3]))
-	//line svg.qtpl:39
+	//line svg.qtpl:37
 	qw422016.N().S(`" height="`)
-	//line svg.qtpl:39
+	//line svg.qtpl:37
 	qw422016.N().D(configuration.Title.FontSize)
-	//line svg.qtpl:39
+	//line svg.qtpl:37
 	qw422016.N().S(`">
-        <text x="50%" y="100%" alignment-baseline="middle" text-anchor="middle" font-size="`)
-	//line svg.qtpl:40
+        <text x="50%" y="95%" alignment-baseline="middle" text-anchor="middle" font-size="`)
+	//line svg.qtpl:38
 	qw422016.N().D(configuration.Title.FontSize)
-	//line svg.qtpl:40
+	//line svg.qtpl:38
 	qw422016.N().S(`">`)
-	//line svg.qtpl:40
+	//line svg.qtpl:38
 	qw422016.E().S(string(id))
-	//line svg.qtpl:40
+	//line svg.qtpl:38
 	qw422016.N().S(`</text>
     </svg>
 </g>
 `)
-	//line svg.qtpl:43
+	//line svg.qtpl:41
 }
 
-//line svg.qtpl:43
+//line svg.qtpl:41
 func WriteTitle(qq422016 qtio422016.Writer, id device.ID, configuration Configuration) {
-	//line svg.qtpl:43
+	//line svg.qtpl:41
 	qw422016 := qt422016.AcquireWriter(qq422016)
-	//line svg.qtpl:43
+	//line svg.qtpl:41
 	StreamTitle(qw422016, id, configuration)
-	//line svg.qtpl:43
+	//line svg.qtpl:41
 	qt422016.ReleaseWriter(qw422016)
-	//line svg.qtpl:43
+	//line svg.qtpl:41
+}
+
+//line svg.qtpl:41
+func Title(id device.ID, configuration Configuration) string {
+	//line svg.qtpl:41
+	qb422016 := qt422016.AcquireByteBuffer()
+	//line svg.qtpl:41
+	WriteTitle(qb422016, id, configuration)
+	//line svg.qtpl:41
+	qs422016 := string(qb422016.B)
+	//line svg.qtpl:41
+	qt422016.ReleaseByteBuffer(qb422016)
+	//line svg.qtpl:41
+	return qs422016
+	//line svg.qtpl:41
 }
 
 //line svg.qtpl:43
-func Title(id device.ID, configuration Configuration) string {
-	//line svg.qtpl:43
-	qb422016 := qt422016.AcquireByteBuffer()
-	//line svg.qtpl:43
-	WriteTitle(qb422016, id, configuration)
-	//line svg.qtpl:43
-	qs422016 := string(qb422016.B)
-	//line svg.qtpl:43
-	qt422016.ReleaseByteBuffer(qb422016)
-	//line svg.qtpl:43
-	return qs422016
-	//line svg.qtpl:43
-}
-
-//line svg.qtpl:45
 func StreamRecordRight(qw422016 *qt422016.Writer, record device.Record, translate Translate, configuration Configuration) {
-	//line svg.qtpl:45
+	//line svg.qtpl:43
 	qw422016.N().S(`
 <g transform="translate(`)
-	//line svg.qtpl:46
+	//line svg.qtpl:44
 	qw422016.N().D(translate.Horizontal)
-	//line svg.qtpl:46
+	//line svg.qtpl:44
 	qw422016.N().S(`,`)
-	//line svg.qtpl:46
+	//line svg.qtpl:44
 	qw422016.N().D(translate.Vertical)
-	//line svg.qtpl:46
+	//line svg.qtpl:44
 	qw422016.N().S(`)">
     <rect width="`)
-	//line svg.qtpl:47
+	//line svg.qtpl:45
 	qw422016.N().D(configuration.Rectangle.Width)
-	//line svg.qtpl:47
+	//line svg.qtpl:45
 	qw422016.N().S(`" height="`)
-	//line svg.qtpl:47
+	//line svg.qtpl:45
 	qw422016.N().D(configuration.Rectangle.Height)
-	//line svg.qtpl:47
-	qw422016.N().S(`" style="`)
-	//line svg.qtpl:47
-	qw422016.E().S(configuration.Rectangle.Style)
-	//line svg.qtpl:47
-	qw422016.N().S(`"/>
+	//line svg.qtpl:45
+	qw422016.N().S(`" style="stroke:black;stroke-width:1.5;fill:none"/>
     <svg width="`)
-	//line svg.qtpl:48
+	//line svg.qtpl:46
 	qw422016.N().D(configuration.Rectangle.Width)
-	//line svg.qtpl:48
+	//line svg.qtpl:46
 	qw422016.N().S(`" height="`)
-	//line svg.qtpl:48
+	//line svg.qtpl:46
 	qw422016.N().D(configuration.Rectangle.Height)
-	//line svg.qtpl:48
+	//line svg.qtpl:46
 	qw422016.N().S(`">
         <text x="50%" y="70%" text-anchor="middle" font-size="`)
-	//line svg.qtpl:49
+	//line svg.qtpl:47
 	qw422016.N().D(configuration.Text.FontSize)
-	//line svg.qtpl:49
+	//line svg.qtpl:47
 	qw422016.N().S(`">`)
-	//line svg.qtpl:49
+	//line svg.qtpl:47
 	qw422016.E().S(record.Port)
-	//line svg.qtpl:49
+	//line svg.qtpl:47
 	qw422016.N().S(`</text>
     </svg>
     `)
-	//line svg.qtpl:52
+	//line svg.qtpl:50
 	var (
 		h = configuration.Rectangle.Height / 2
 		w = configuration.Arrow.HorizontalLength - configuration.Arrow.HorizontalShift
 	)
 
-	//line svg.qtpl:56
+	//line svg.qtpl:54
 	qw422016.N().S(`
 
     `)
-	//line svg.qtpl:58
+	//line svg.qtpl:56
 	if record.Description.IsValid() {
-		//line svg.qtpl:58
+		//line svg.qtpl:56
 		qw422016.N().S(`
         <g transform="translate(`)
-		//line svg.qtpl:59
+		//line svg.qtpl:57
 		qw422016.N().D(configuration.Rectangle.Width)
-		//line svg.qtpl:59
+		//line svg.qtpl:57
 		qw422016.N().S(`,0)">
             <line x1="0" y1="`)
-		//line svg.qtpl:60
+		//line svg.qtpl:58
 		qw422016.N().D(h)
-		//line svg.qtpl:60
+		//line svg.qtpl:58
 		qw422016.N().S(`" x2="`)
-		//line svg.qtpl:60
+		//line svg.qtpl:58
 		qw422016.N().D(configuration.Arrow.HorizontalLength)
-		//line svg.qtpl:60
+		//line svg.qtpl:58
 		qw422016.N().S(`" y2="`)
-		//line svg.qtpl:60
+		//line svg.qtpl:58
 		qw422016.N().D(h)
-		//line svg.qtpl:60
-		qw422016.N().S(`" style="`)
-		//line svg.qtpl:60
-		qw422016.E().S(configuration.Arrow.Style)
-		//line svg.qtpl:60
-		qw422016.N().S(`"/>
+		//line svg.qtpl:58
+		qw422016.N().S(`" style="stroke:black;stroke-width:1.5"/>
             <line x1="`)
-		//line svg.qtpl:61
+		//line svg.qtpl:59
 		qw422016.N().D(configuration.Arrow.HorizontalLength)
-		//line svg.qtpl:61
+		//line svg.qtpl:59
 		qw422016.N().S(`" y1="`)
-		//line svg.qtpl:61
+		//line svg.qtpl:59
 		qw422016.N().D(h)
-		//line svg.qtpl:61
+		//line svg.qtpl:59
 		qw422016.N().S(`" x2="`)
-		//line svg.qtpl:61
+		//line svg.qtpl:59
 		qw422016.N().D(w)
-		//line svg.qtpl:61
+		//line svg.qtpl:59
 		qw422016.N().S(`" y2="`)
-		//line svg.qtpl:61
+		//line svg.qtpl:59
 		qw422016.N().D(h - configuration.Arrow.VerticalShift)
-		//line svg.qtpl:61
-		qw422016.N().S(`" style="`)
-		//line svg.qtpl:61
-		qw422016.E().S(configuration.Arrow.Style)
-		//line svg.qtpl:61
-		qw422016.N().S(`"/>
+		//line svg.qtpl:59
+		qw422016.N().S(`" style="stroke:black;stroke-width:1.5"/>
             <line x1="`)
-		//line svg.qtpl:62
+		//line svg.qtpl:60
 		qw422016.N().D(configuration.Arrow.HorizontalLength)
-		//line svg.qtpl:62
+		//line svg.qtpl:60
 		qw422016.N().S(`" y1="`)
-		//line svg.qtpl:62
+		//line svg.qtpl:60
 		qw422016.N().D(h)
-		//line svg.qtpl:62
+		//line svg.qtpl:60
 		qw422016.N().S(`" x2="`)
-		//line svg.qtpl:62
+		//line svg.qtpl:60
 		qw422016.N().D(w)
-		//line svg.qtpl:62
+		//line svg.qtpl:60
 		qw422016.N().S(`" y2="`)
-		//line svg.qtpl:62
+		//line svg.qtpl:60
 		qw422016.N().D(h + configuration.Arrow.VerticalShift)
-		//line svg.qtpl:62
-		qw422016.N().S(`" style="`)
-		//line svg.qtpl:62
-		qw422016.E().S(configuration.Arrow.Style)
-		//line svg.qtpl:62
-		qw422016.N().S(`"/>
+		//line svg.qtpl:60
+		qw422016.N().S(`" style="stroke:black;stroke-width:1.5"/>
             <svg width="`)
-		//line svg.qtpl:63
+		//line svg.qtpl:61
 		qw422016.N().D(configuration.Arrow.HorizontalLength)
-		//line svg.qtpl:63
+		//line svg.qtpl:61
 		qw422016.N().S(`" height="`)
-		//line svg.qtpl:63
+		//line svg.qtpl:61
 		qw422016.N().D(configuration.Rectangle.Height)
-		//line svg.qtpl:63
+		//line svg.qtpl:61
 		qw422016.N().S(`">
                 <text x="2%" y="40%" text-anchor="start" font-size="`)
-		//line svg.qtpl:64
+		//line svg.qtpl:62
 		qw422016.N().D(configuration.Text.FontSize)
-		//line svg.qtpl:64
+		//line svg.qtpl:62
 		qw422016.N().S(`">`)
-		//line svg.qtpl:64
+		//line svg.qtpl:62
 		qw422016.E().S(record.Description.Get())
-		//line svg.qtpl:64
+		//line svg.qtpl:62
 		qw422016.N().S(`</text>
                 <text x="95%" y="40%" text-anchor="end" font-size="`)
-		//line svg.qtpl:65
+		//line svg.qtpl:63
 		qw422016.N().D(configuration.Text.FontSize)
-		//line svg.qtpl:65
+		//line svg.qtpl:63
 		qw422016.N().S(`">`)
-		//line svg.qtpl:65
+		//line svg.qtpl:63
 		qw422016.E().S(record.VLAN.Get())
-		//line svg.qtpl:65
+		//line svg.qtpl:63
 		qw422016.N().S(`</text>
             </svg>
         </g>
     `)
-		//line svg.qtpl:68
+		//line svg.qtpl:66
 	}
-	//line svg.qtpl:68
+	//line svg.qtpl:66
 	qw422016.N().S(`
 </g>
 `)
-	//line svg.qtpl:70
+	//line svg.qtpl:68
 }
 
-//line svg.qtpl:70
+//line svg.qtpl:68
 func WriteRecordRight(qq422016 qtio422016.Writer, record device.Record, translate Translate, configuration Configuration) {
-	//line svg.qtpl:70
+	//line svg.qtpl:68
 	qw422016 := qt422016.AcquireWriter(qq422016)
-	//line svg.qtpl:70
+	//line svg.qtpl:68
 	StreamRecordRight(qw422016, record, translate, configuration)
-	//line svg.qtpl:70
+	//line svg.qtpl:68
 	qt422016.ReleaseWriter(qw422016)
-	//line svg.qtpl:70
+	//line svg.qtpl:68
+}
+
+//line svg.qtpl:68
+func RecordRight(record device.Record, translate Translate, configuration Configuration) string {
+	//line svg.qtpl:68
+	qb422016 := qt422016.AcquireByteBuffer()
+	//line svg.qtpl:68
+	WriteRecordRight(qb422016, record, translate, configuration)
+	//line svg.qtpl:68
+	qs422016 := string(qb422016.B)
+	//line svg.qtpl:68
+	qt422016.ReleaseByteBuffer(qb422016)
+	//line svg.qtpl:68
+	return qs422016
+	//line svg.qtpl:68
 }
 
 //line svg.qtpl:70
-func RecordRight(record device.Record, translate Translate, configuration Configuration) string {
-	//line svg.qtpl:70
-	qb422016 := qt422016.AcquireByteBuffer()
-	//line svg.qtpl:70
-	WriteRecordRight(qb422016, record, translate, configuration)
-	//line svg.qtpl:70
-	qs422016 := string(qb422016.B)
-	//line svg.qtpl:70
-	qt422016.ReleaseByteBuffer(qb422016)
-	//line svg.qtpl:70
-	return qs422016
-	//line svg.qtpl:70
-}
-
-//line svg.qtpl:72
 func StreamRecordLeft(qw422016 *qt422016.Writer, record device.Record, translate Translate, configuration Configuration) {
-	//line svg.qtpl:72
+	//line svg.qtpl:70
 	qw422016.N().S(`
 <g transform="translate(`)
-	//line svg.qtpl:73
+	//line svg.qtpl:71
 	qw422016.N().D(translate.Horizontal)
-	//line svg.qtpl:73
+	//line svg.qtpl:71
 	qw422016.N().S(`,`)
-	//line svg.qtpl:73
+	//line svg.qtpl:71
 	qw422016.N().D(translate.Vertical)
-	//line svg.qtpl:73
+	//line svg.qtpl:71
 	qw422016.N().S(`)">
     <rect width="`)
-	//line svg.qtpl:74
+	//line svg.qtpl:72
 	qw422016.N().D(configuration.Rectangle.Width)
-	//line svg.qtpl:74
+	//line svg.qtpl:72
 	qw422016.N().S(`" height="`)
-	//line svg.qtpl:74
+	//line svg.qtpl:72
 	qw422016.N().D(configuration.Rectangle.Height)
-	//line svg.qtpl:74
-	qw422016.N().S(`" style="`)
-	//line svg.qtpl:74
-	qw422016.E().S(configuration.Rectangle.Style)
-	//line svg.qtpl:74
-	qw422016.N().S(`"/>
+	//line svg.qtpl:72
+	qw422016.N().S(`" style="stroke:black;stroke-width:1.5;fill:none"/>
     <svg width="`)
-	//line svg.qtpl:75
+	//line svg.qtpl:73
 	qw422016.N().D(configuration.Rectangle.Width)
-	//line svg.qtpl:75
+	//line svg.qtpl:73
 	qw422016.N().S(`" height="`)
-	//line svg.qtpl:75
+	//line svg.qtpl:73
 	qw422016.N().D(configuration.Rectangle.Height)
-	//line svg.qtpl:75
+	//line svg.qtpl:73
 	qw422016.N().S(`">
         <text x="50%" y="70%" text-anchor="middle" font-size="`)
-	//line svg.qtpl:76
+	//line svg.qtpl:74
 	qw422016.N().D(configuration.Text.FontSize)
-	//line svg.qtpl:76
+	//line svg.qtpl:74
 	qw422016.N().S(`">`)
-	//line svg.qtpl:76
+	//line svg.qtpl:74
 	qw422016.E().S(record.Port)
-	//line svg.qtpl:76
+	//line svg.qtpl:74
 	qw422016.N().S(`</text>
     </svg>
     `)
-	//line svg.qtpl:79
+	//line svg.qtpl:77
 	var (
 		h = configuration.Rectangle.Height / 2
 		w = configuration.Arrow.HorizontalLength - configuration.Arrow.HorizontalShift
 	)
 
-	//line svg.qtpl:83
+	//line svg.qtpl:81
 	qw422016.N().S(`
 
     `)
-	//line svg.qtpl:85
+	//line svg.qtpl:83
 	if record.Description.IsValid() {
-		//line svg.qtpl:85
+		//line svg.qtpl:83
 		qw422016.N().S(`
         <line x1="0" y1="`)
-		//line svg.qtpl:86
+		//line svg.qtpl:84
 		qw422016.N().D(h)
-		//line svg.qtpl:86
+		//line svg.qtpl:84
 		qw422016.N().S(`" x2="`)
-		//line svg.qtpl:86
+		//line svg.qtpl:84
 		qw422016.N().D(-configuration.Arrow.HorizontalLength)
-		//line svg.qtpl:86
+		//line svg.qtpl:84
 		qw422016.N().S(`" y2="`)
-		//line svg.qtpl:86
+		//line svg.qtpl:84
 		qw422016.N().D(h)
-		//line svg.qtpl:86
-		qw422016.N().S(`" style="`)
-		//line svg.qtpl:86
-		qw422016.E().S(configuration.Arrow.Style)
-		//line svg.qtpl:86
-		qw422016.N().S(`"/>
+		//line svg.qtpl:84
+		qw422016.N().S(`" style="stroke:black;stroke-width:1.5"/>
         <line x1="`)
-		//line svg.qtpl:87
+		//line svg.qtpl:85
 		qw422016.N().D(-configuration.Arrow.HorizontalLength)
-		//line svg.qtpl:87
+		//line svg.qtpl:85
 		qw422016.N().S(`" y1="`)
-		//line svg.qtpl:87
+		//line svg.qtpl:85
 		qw422016.N().D(h)
-		//line svg.qtpl:87
+		//line svg.qtpl:85
 		qw422016.N().S(`" x2="`)
-		//line svg.qtpl:87
+		//line svg.qtpl:85
 		qw422016.N().D(-w)
-		//line svg.qtpl:87
+		//line svg.qtpl:85
 		qw422016.N().S(`" y2="`)
-		//line svg.qtpl:87
+		//line svg.qtpl:85
 		qw422016.N().D(h - configuration.Arrow.VerticalShift)
-		//line svg.qtpl:87
-		qw422016.N().S(`" style="`)
-		//line svg.qtpl:87
-		qw422016.E().S(configuration.Arrow.Style)
-		//line svg.qtpl:87
-		qw422016.N().S(`"/>
+		//line svg.qtpl:85
+		qw422016.N().S(`" style="stroke:black;stroke-width:1.5"/>
         <line x1="`)
-		//line svg.qtpl:88
+		//line svg.qtpl:86
 		qw422016.N().D(-configuration.Arrow.HorizontalLength)
-		//line svg.qtpl:88
+		//line svg.qtpl:86
 		qw422016.N().S(`" y1="`)
-		//line svg.qtpl:88
+		//line svg.qtpl:86
 		qw422016.N().D(h)
-		//line svg.qtpl:88
+		//line svg.qtpl:86
 		qw422016.N().S(`" x2="`)
-		//line svg.qtpl:88
+		//line svg.qtpl:86
 		qw422016.N().D(-w)
-		//line svg.qtpl:88
+		//line svg.qtpl:86
 		qw422016.N().S(`" y2="`)
-		//line svg.qtpl:88
+		//line svg.qtpl:86
 		qw422016.N().D(h + configuration.Arrow.VerticalShift)
-		//line svg.qtpl:88
-		qw422016.N().S(`" style="`)
-		//line svg.qtpl:88
-		qw422016.E().S(configuration.Arrow.Style)
-		//line svg.qtpl:88
-		qw422016.N().S(`"/>
+		//line svg.qtpl:86
+		qw422016.N().S(`" style="stroke:black;stroke-width:1.5"/>
         <g transform="translate(`)
-		//line svg.qtpl:89
+		//line svg.qtpl:87
 		qw422016.N().D(-configuration.Arrow.HorizontalLength)
-		//line svg.qtpl:89
+		//line svg.qtpl:87
 		qw422016.N().S(`,0)">
             <svg width="`)
-		//line svg.qtpl:90
+		//line svg.qtpl:88
 		qw422016.N().D(configuration.Arrow.HorizontalLength)
-		//line svg.qtpl:90
+		//line svg.qtpl:88
 		qw422016.N().S(`" height="`)
-		//line svg.qtpl:90
+		//line svg.qtpl:88
 		qw422016.N().D(configuration.Rectangle.Height)
-		//line svg.qtpl:90
+		//line svg.qtpl:88
 		qw422016.N().S(`">
                 <text x="98%" y="40%" text-anchor="end" font-size="`)
-		//line svg.qtpl:91
+		//line svg.qtpl:89
 		qw422016.N().D(configuration.Text.FontSize)
-		//line svg.qtpl:91
+		//line svg.qtpl:89
 		qw422016.N().S(`">`)
-		//line svg.qtpl:91
+		//line svg.qtpl:89
 		qw422016.E().S(record.Description.Get())
-		//line svg.qtpl:91
+		//line svg.qtpl:89
 		qw422016.N().S(`</text>
                 <text x="5%" y="40%" text-anchor="start" font-size="`)
-		//line svg.qtpl:92
+		//line svg.qtpl:90
 		qw422016.N().D(configuration.Text.FontSize)
-		//line svg.qtpl:92
+		//line svg.qtpl:90
 		qw422016.N().S(`">`)
-		//line svg.qtpl:92
+		//line svg.qtpl:90
 		qw422016.E().S(record.VLAN.Get())
-		//line svg.qtpl:92
+		//line svg.qtpl:90
 		qw422016.N().S(`</text>
             </svg>
         </g>
     `)
-		//line svg.qtpl:95
+		//line svg.qtpl:93
 	}
-	//line svg.qtpl:95
+	//line svg.qtpl:93
 	qw422016.N().S(`
 </g>
 `)
-	//line svg.qtpl:97
+	//line svg.qtpl:95
 }
 
-//line svg.qtpl:97
+//line svg.qtpl:95
 func WriteRecordLeft(qq422016 qtio422016.Writer, record device.Record, translate Translate, configuration Configuration) {
-	//line svg.qtpl:97
+	//line svg.qtpl:95
 	qw422016 := qt422016.AcquireWriter(qq422016)
-	//line svg.qtpl:97
+	//line svg.qtpl:95
 	StreamRecordLeft(qw422016, record, translate, configuration)
-	//line svg.qtpl:97
+	//line svg.qtpl:95
 	qt422016.ReleaseWriter(qw422016)
-	//line svg.qtpl:97
+	//line svg.qtpl:95
+}
+
+//line svg.qtpl:95
+func RecordLeft(record device.Record, translate Translate, configuration Configuration) string {
+	//line svg.qtpl:95
+	qb422016 := qt422016.AcquireByteBuffer()
+	//line svg.qtpl:95
+	WriteRecordLeft(qb422016, record, translate, configuration)
+	//line svg.qtpl:95
+	qs422016 := string(qb422016.B)
+	//line svg.qtpl:95
+	qt422016.ReleaseByteBuffer(qb422016)
+	//line svg.qtpl:95
+	return qs422016
+	//line svg.qtpl:95
 }
 
 //line svg.qtpl:97
-func RecordLeft(record device.Record, translate Translate, configuration Configuration) string {
+func StreamContent(qw422016 *qt422016.Writer, x, y, w, h int, text string) {
 	//line svg.qtpl:97
-	qb422016 := qt422016.AcquireByteBuffer()
-	//line svg.qtpl:97
-	WriteRecordLeft(qb422016, record, translate, configuration)
-	//line svg.qtpl:97
-	qs422016 := string(qb422016.B)
-	//line svg.qtpl:97
-	qt422016.ReleaseByteBuffer(qb422016)
-	//line svg.qtpl:97
-	return qs422016
-	//line svg.qtpl:97
+	qw422016.N().S(`
+<g transform="translate(`)
+	//line svg.qtpl:98
+	qw422016.N().D(x)
+	//line svg.qtpl:98
+	qw422016.N().S(`,`)
+	//line svg.qtpl:98
+	qw422016.N().D(y)
+	//line svg.qtpl:98
+	qw422016.N().S(`)">
+    <rect width="`)
+	//line svg.qtpl:99
+	qw422016.N().D(w)
+	//line svg.qtpl:99
+	qw422016.N().S(`" height="`)
+	//line svg.qtpl:99
+	qw422016.N().D(h)
+	//line svg.qtpl:99
+	qw422016.N().S(`" style="stroke:black;stroke-width:1.5;fill:none"/>
+    <svg width="`)
+	//line svg.qtpl:100
+	qw422016.N().D(w)
+	//line svg.qtpl:100
+	qw422016.N().S(`" height="`)
+	//line svg.qtpl:100
+	qw422016.N().D(h)
+	//line svg.qtpl:100
+	qw422016.N().S(`">
+        <text x="50%" y="50%" text-anchor="middle" font-size="`)
+	//line svg.qtpl:101
+	qw422016.N().D(14)
+	//line svg.qtpl:101
+	qw422016.N().S(`">`)
+	//line svg.qtpl:101
+	qw422016.E().S(text)
+	//line svg.qtpl:101
+	qw422016.N().S(`</text>
+    </svg>
+</g>
+`)
+	//line svg.qtpl:104
 }
 
-//line svg.qtpl:99
+//line svg.qtpl:104
+func WriteContent(qq422016 qtio422016.Writer, x, y, w, h int, text string) {
+	//line svg.qtpl:104
+	qw422016 := qt422016.AcquireWriter(qq422016)
+	//line svg.qtpl:104
+	StreamContent(qw422016, x, y, w, h, text)
+	//line svg.qtpl:104
+	qt422016.ReleaseWriter(qw422016)
+	//line svg.qtpl:104
+}
+
+//line svg.qtpl:104
+func Content(x, y, w, h int, text string) string {
+	//line svg.qtpl:104
+	qb422016 := qt422016.AcquireByteBuffer()
+	//line svg.qtpl:104
+	WriteContent(qb422016, x, y, w, h, text)
+	//line svg.qtpl:104
+	qs422016 := string(qb422016.B)
+	//line svg.qtpl:104
+	qt422016.ReleaseByteBuffer(qb422016)
+	//line svg.qtpl:104
+	return qs422016
+	//line svg.qtpl:104
+}
+
+//line svg.qtpl:107
 func StreamFooter(qw422016 *qt422016.Writer) {
-	//line svg.qtpl:99
+	//line svg.qtpl:107
 	qw422016.N().S(`</svg>`)
 }
 
-//line svg.qtpl:99
-//line svg.qtpl:99
+//line svg.qtpl:107
+//line svg.qtpl:107
 func WriteFooter(qq422016 qtio422016.Writer) {
-	//line svg.qtpl:99
+	//line svg.qtpl:107
 	qw422016 := qt422016.AcquireWriter(qq422016)
-	//line svg.qtpl:99
+	//line svg.qtpl:107
 	StreamFooter(qw422016)
-	//line svg.qtpl:99
+	//line svg.qtpl:107
 	qt422016.ReleaseWriter(qw422016)
-	//line svg.qtpl:99
+	//line svg.qtpl:107
 }
 
-//line svg.qtpl:99
+//line svg.qtpl:107
 func Footer() string {
-	//line svg.qtpl:99
+	//line svg.qtpl:107
 	qb422016 := qt422016.AcquireByteBuffer()
-	//line svg.qtpl:99
+	//line svg.qtpl:107
 	WriteFooter(qb422016)
-	//line svg.qtpl:99
+	//line svg.qtpl:107
 	qs422016 := string(qb422016.B)
-	//line svg.qtpl:99
+	//line svg.qtpl:107
 	qt422016.ReleaseByteBuffer(qb422016)
-	//line svg.qtpl:99
+	//line svg.qtpl:107
 	return qs422016
-	//line svg.qtpl:99
+	//line svg.qtpl:107
 }

@@ -33,13 +33,13 @@ func defaultConfiguration() templates.Configuration {
 			FontSize: 44,
 		},
 		Rectangle: templates.RectangleConfiguration{
-			Width: 80, Height: 20, Style: "stroke:black;stroke-width:1.5;fill:none",
+			Width: 80, Height: 20,
 		},
 		Text: templates.TextConfiguration{
 			FontSize: 11,
 		},
 		Arrow: templates.ArrowConfiguration{
-			HorizontalLength: 300, HorizontalShift: 10, VerticalShift: 5, Style: "stroke:black;stroke-width:1.5",
+			HorizontalLength: 300, HorizontalShift: 10, VerticalShift: 5,
 		},
 	}
 }
@@ -108,10 +108,15 @@ func execer(tasks <-chan task) {
 			Left
 		)
 		var (
+			right  = configuration.Width - configuration.Padding[1] - configuration.Arrow.HorizontalLength - configuration.Rectangle.Width
+			left   = configuration.Padding[3] + configuration.Arrow.HorizontalLength + configuration.Rectangle.Width
+			top    = configuration.Padding[0] + configuration.Title.FontSize + 50
+			bottom = configuration.Height - configuration.Padding[2]
+		)
+		var (
 			translate = templates.Translate{
-				Horizontal: configuration.Width - configuration.Padding[1] -
-					configuration.Arrow.HorizontalLength - configuration.Rectangle.Width,
-				Vertical: configuration.Padding[0] + configuration.Title.FontSize + 50,
+				Horizontal: right,
+				Vertical:   top,
 			}
 			anchor = Right
 		)
@@ -125,46 +130,52 @@ func execer(tasks <-chan task) {
 			}
 
 			translate.Vertical += configuration.Rectangle.Height
-			if translate.Vertical+configuration.Rectangle.Height > configuration.Height-configuration.Padding[2] {
+			if translate.Vertical+configuration.Rectangle.Height > bottom {
 				translate = templates.Translate{
-					Horizontal: configuration.Padding[3] + configuration.Arrow.HorizontalLength,
-					Vertical:   configuration.Padding[0] + configuration.Title.FontSize + 50,
+					Horizontal: left - configuration.Rectangle.Width,
+					Vertical:   top,
 				}
 				anchor = Left
 			}
 		}
 
+		height := (bottom - top) / configuration.Rectangle.Height * configuration.Rectangle.Height
+		templates.WriteContent(w, left, top, right-left, height, "255.255.255.255")
 		templates.WriteFooter(w)
 		w.Close()
 	}
 }
 
 func main() {
-	filename := flag.String("input", "", "input `file` (required)")
-	config := flag.String("configuration", "", "configuration `file`")
-	list := flag.Bool("list", false, "print list of all available parsers")
+	var (
+		filename, config string
+		list             bool
+	)
+	flag.StringVar(&filename, "i", "", "input `FILE` (required)")
+	flag.StringVar(&config, "c", "", "configuration `FILE`")
+	flag.BoolVar(&list, "l", false, "print list of all available parsers")
 
 	flag.Parse()
 
-	if *list {
+	if list {
 		for _, p := range mskix.Parsers() {
 			fmt.Println(p)
 		}
 		return
 	}
 
-	if *filename == "" {
+	if filename == "" {
 		flag.PrintDefaults()
 		return
 	}
 
-	data, err := ioutil.ReadFile(*filename)
+	data, err := ioutil.ReadFile(filename)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	var configuration templates.Configuration
-	if data, err := ioutil.ReadFile(*config); err == nil {
+	if data, err := ioutil.ReadFile(config); err == nil {
 		if err := json.Unmarshal(data, &configuration); err != nil {
 			log.Printf("configuration error: %s. returning to default configuration", err)
 			configuration = defaultConfiguration()
