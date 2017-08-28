@@ -1,0 +1,157 @@
+Port     Description  Status Speed     Duplex Vlan
+Gi 0/0   abcdd-10.2   Up     100 Mbit  Full   786-787,999
+Gi 0/1   defgg        Up     100 Mbit  Full   828
+Gi 0/2   rfv-4.2      Up     1000 Mbit Full   743
+Gi 0/3                Down   Auto      Auto   99
+Gi 0/4   frgts-9      Up     100 Mbit  Full   701
+Gi 0/5   adfdfd-2     Up     1000 Mbit Full   701
+Gi 0/6   yuuig.2      Up     100 Mbit  Full   798
+Gi 0/7   rrrrrr.2     Up     1000 Mbit Full   858
+Gi 0/8   ttttttttt-5  Up     1000 Mbit Full   --
+Gi 0/9                Down   Auto      Auto   99
+Gi 0/10               Down   Auto      Auto   99
+Gi 0/11  ttttttttt-5  Up     1000 Mbit Full   --
+Gi 0/12  dfsfs        Up     1000 Mbit Full   701
+Gi 0/13               Down   Auto      Auto   99
+Gi 0/14               Down   Auto      Auto   99
+Gi 0/15  gggm-3       Up     10 Mbit   Full   406
+Gi 0/16  jku-4        Up     1000 Mbit Full   701
+Gi 0/17               Down   Auto      Auto   99
+Gi 0/18               Down   Auto      Auto   99
+Gi 0/19               Down   Auto      Auto   99
+Gi 0/20  comfdfsf     Up     1000 Mbit Full   701
+Gi 0/21               Down   Auto      Auto   99
+Gi 0/22               Down   Auto      Auto   99
+Gi 0/23               Down   Auto      Auto   99
+Gi 0/24               Down   Auto      Auto   99
+Gi 0/25               Down   Auto      Auto   99
+Gi 0/26               Down   Auto      Auto   99
+Gi 0/27  comoma-2     Up     100 Mbit  Full   701
+Gi 0/28               Down   Auto      Auto   1
+Gi 0/29               Down   Auto      Auto   99
+Gi 0/30  mmfsfnet-2   Up     1000 Mbit Full   701
+Gi 0/31  ttttttttt-4  Up     1000 Mbit Full   779
+Gi 0/32  lofffn       Up     1000 Mbit Full   701
+Gi 0/33               Down   Auto      Auto   99
+Gi 0/34               Down   Auto      Auto   99
+Gi 0/35               Down   Auto      Auto   99
+Gi 0/36  m10-s4+m10-  Up     100 Mbit  Full   801
+Gi 0/37  m10-s4+m10-  Up     100 Mbit  Full   801
+Gi 0/38  m10-s2+m10-  Down   Auto      Auto   801
+Gi 0/39               Down   Auto      Auto   99
+Gi 0/40  m10-w2+m10-  Up     100 Mbit  Full   750
+Gi 0/41  m10-w1+m10-  Up     100 Mbit  Full   750
+Gi 0/42  m10-cs1+m10  Up     10 Mbit   Half   811
+Gi 0/43  ripn-mobile  Down   Auto      Auto   416
+Gi 0/44               Down   Auto      Auto   99
+Gi 0/45  kxxx-14.2    Up     1000 Mbit Full   875
+Gi 0/46  kxxx-15.2    Up     1000 Mbit Full   879
+Gi 0/47  anfdffsk     Up     1000 Mbit Full   701
+Te 0/48               Down   10000 Mbit Auto   --
+Te 0/49               Down   10000 Mbit Auto   99
+Te 0/50  m10-s4=m10-  Up     10000 Mbit Auto   --
+Te 0/51  m10-s4=m10-  Up     10000 Mbit Auto   --
+Gi 0/0   abcdd-10.2   Up     100 Mbit  Full   786-787,999
+Gi 0/1   defgg        Up     100 Mbit  Full   828
+Gi 0/2   rfv-4.2      Up     1000 Mbit Full   743
+Gi 0/3                Down   Auto      Auto   99
+Gi 0/4   frgts-9      Up     100 Mbit  Full   701
+Gi 0/5   adfdfd-2     Up     1000 Mbit Full   701
+Gi 0/6   yuuig.2      Up     100 Mbit  Full   798
+Gi 0/7   rrrrrr.2     Up     1000 Mbit Full   858
+Gi 0/8   ttttttttt-5  Up     1000 Mbit Full   --
+Gi 0/9                Down   Auto      Auto   99
+Gi 0/10               Down   Auto      Auto   99
+Gi 0/11  ttttttttt-5  Up     1000 Mbit Full   --
+Gi 0/12  dfsfs        Up     1000 Mbit Full   701
+Gi 0/13               Down   Auto      Auto   99
+Gi 0/14               Down   Auto      Auto   99
+Gi 0/15  gggm-3       Up     10 Mbit   Full   406
+Gi 0/16  jku-4        Up     1000 Mbit Full   701
+Gi 0/17               Down   Auto      Auto   99
+Gi 0/18               Down   Auto      Auto   99
+Gi 0/19               Down   Auto      Auto   99
+Gi 0/20  comfdfsf     Up     1000 Mbit Full   701
+Gi 0/21               Down   Auto      Auto   99
+Gi 0/22               Down   Auto      Auto   99
+Gi 0/23               Down   Auto      Auto   99
+Gi 0/24               Down   Auto      Auto   99
+Gi 0/25               Down   Auto      Auto   99
+Gi 0/26               Down   Auto      Auto   99
+Gi 0/27  comoma-2     Up     100 Mbit  Full   701
+Gi 0/28               Down   Auto      Auto   1
+Gi 0/29               Down   Auto      Auto   99
+Gi 0/30  mmfsfnet-2   Up     1000 Mbit Full   701
+Gi 0/31  ttttttttt-4  Up     1000 Mbit Full   779
+Gi 0/32  lofffn       Up     1000 Mbit Full   701
+Gi 0/33               Down   Auto      Auto   99
+Gi 0/34               Down   Auto      Auto   99
+Gi 0/35               Down   Auto      Auto   99
+Gi 0/36  m10-s4+m10-  Up     100 Mbit  Full   801
+Gi 0/37  m10-s4+m10-  Up     100 Mbit  Full   801
+Gi 0/38  m10-s2+m10-  Down   Auto      Auto   801
+Gi 0/39               Down   Auto      Auto   99
+Gi 0/40  m10-w2+m10-  Up     100 Mbit  Full   750
+Gi 0/41  m10-w1+m10-  Up     100 Mbit  Full   750
+Gi 0/42  m10-cs1+m10  Up     10 Mbit   Half   811
+Gi 0/43  ripn-mobile  Down   Auto      Auto   416
+Gi 0/44               Down   Auto      Auto   99
+Gi 0/45  kxxx-14.2    Up     1000 Mbit Full   875
+Gi 0/46  kxxx-15.2    Up     1000 Mbit Full   879
+Gi 0/47  anfdffsk     Up     1000 Mbit Full   701
+Te 0/48               Down   10000 Mbit Auto   --
+Te 0/49               Down   10000 Mbit Auto   99
+Te 0/50  m10-s4=m10-  Up     10000 Mbit Auto   --
+Te 0/51  m10-s4=m10-  Up     10000 Mbit Auto   --
+Gi 0/0   abcdd-10.2   Up     100 Mbit  Full   786-787,999
+Gi 0/1   defgg        Up     100 Mbit  Full   828
+Gi 0/2   rfv-4.2      Up     1000 Mbit Full   743
+Gi 0/3                Down   Auto      Auto   99
+Gi 0/4   frgts-9      Up     100 Mbit  Full   701
+Gi 0/5   adfdfd-2     Up     1000 Mbit Full   701
+Gi 0/6   yuuig.2      Up     100 Mbit  Full   798
+Gi 0/7   rrrrrr.2     Up     1000 Mbit Full   858
+Gi 0/8   ttttttttt-5  Up     1000 Mbit Full   --
+Gi 0/9                Down   Auto      Auto   99
+Gi 0/10               Down   Auto      Auto   99
+Gi 0/11  ttttttttt-5  Up     1000 Mbit Full   --
+Gi 0/12  dfsfs        Up     1000 Mbit Full   701
+Gi 0/13               Down   Auto      Auto   99
+Gi 0/14               Down   Auto      Auto   99
+Gi 0/15  gggm-3       Up     10 Mbit   Full   406
+Gi 0/16  jku-4        Up     1000 Mbit Full   701
+Gi 0/17               Down   Auto      Auto   99
+Gi 0/18               Down   Auto      Auto   99
+Gi 0/19               Down   Auto      Auto   99
+Gi 0/20  comfdfsf     Up     1000 Mbit Full   701
+Gi 0/21               Down   Auto      Auto   99
+Gi 0/22               Down   Auto      Auto   99
+Gi 0/23               Down   Auto      Auto   99
+Gi 0/24               Down   Auto      Auto   99
+Gi 0/25               Down   Auto      Auto   99
+Gi 0/26               Down   Auto      Auto   99
+Gi 0/27  comoma-2     Up     100 Mbit  Full   701
+Gi 0/28               Down   Auto      Auto   1
+Gi 0/29               Down   Auto      Auto   99
+Gi 0/30  mmfsfnet-2   Up     1000 Mbit Full   701
+Gi 0/31  ttttttttt-4  Up     1000 Mbit Full   779
+Gi 0/32  lofffn       Up     1000 Mbit Full   701
+Gi 0/33               Down   Auto      Auto   99
+Gi 0/34               Down   Auto      Auto   99
+Gi 0/35               Down   Auto      Auto   99
+Gi 0/36  m10-s4+m10-  Up     100 Mbit  Full   801
+Gi 0/37  m10-s4+m10-  Up     100 Mbit  Full   801
+Gi 0/38  m10-s2+m10-  Down   Auto      Auto   801
+Gi 0/39               Down   Auto      Auto   99
+Gi 0/40  m10-w2+m10-  Up     100 Mbit  Full   750
+Gi 0/41  m10-w1+m10-  Up     100 Mbit  Full   750
+Gi 0/42  m10-cs1+m10  Up     10 Mbit   Half   811
+Gi 0/43  ripn-mobile  Down   Auto      Auto   416
+Gi 0/44               Down   Auto      Auto   99
+Gi 0/45  kxxx-14.2    Up     1000 Mbit Full   875
+Gi 0/46  kxxx-15.2    Up     1000 Mbit Full   879
+Gi 0/47  anfdffsk     Up     1000 Mbit Full   701
+Te 0/48               Down   10000 Mbit Auto   --
+Te 0/49               Down   10000 Mbit Auto   99
+Te 0/50  m10-s4=m10-  Up     10000 Mbit Auto   --
+Te 0/51  m10-s4=m10-  Up     10000 Mbit Auto   --

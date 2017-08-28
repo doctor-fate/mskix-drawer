@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<svg width="1024" height="1024" xmlns="http://www.w3.org/2000/svg">
+
+    <g transform="translate(25,15)">
+        <svg width="974" height="44">
+            <text x="50%" y="95%" alignment-baseline="middle" text-anchor="middle" font-size="44">Cisco</text>
+        </svg>
+    </g>
+
+    <g transform="translate(619,109)">
+        <rect width="80" height="20" style="stroke:black;stroke-width:1.5;fill:none"/>
+        <svg width="80" height="20">
+            <text x="50%" y="70%" text-anchor="middle" font-size="11">Fa0/1</text>
+        </svg>
+
+
+    </g>
+
+    <g transform="translate(619,129)">
+        <rect width="80" height="20" style="stroke:black;stroke-width:1.5;fill:none"/>
+        <svg width="80" height="20">
+            <text x="50%" y="70%" text-anchor="middle" font-size="11">Fa0/2</text>
+        </svg>
+
+
+    </g>
+
+    <g transform="translate(619,149)">
+        <rect width="80" height="20" style="stroke:black;stroke-width:1.5;fill:none"/>
+        <svg width="80" height="20">
+            <text x="50%" y="70%" text-anchor="middle" font-size="11">Fa0/3</text>
+        </svg>
+
+
+    </g>
+
+    <g transform="translate(619,169)">
+        <rect width="80" height="20" style="stroke:black;stroke-width:1.5;fill:none"/>
+        <svg width="80" height="20">
+            <text x="50%" y="70%" text-anchor="middle" font-size="11">Fa0/4</text>
+        </svg>
+
+
+    </g>
+
+    <g transform="translate(619,189)">
+        <rect width="80" height="20" style="stroke:black;stroke-width:1.5;fill:none"/>
+        <svg width="80" height="20">
+            <text x="50%" y="70%" text-anchor="middle" font-size="11">Fa0/5</text>
+        </svg>
+
+
+    </g>
+
+    <g transform="translate(619,209)">
+        <rect width="80" height="20" style="stroke:black;stroke-width:1.5;fill:none"/>
+        <svg width="80" height="20">
+            <text x="50%" y="70%" text-anchor="middle" font-size="11">Fa0/6</text>
+        </svg>
+
+
+    </g>
+
+    <g transform="translate(619,229)">
+        <rect width="80" height="20" style="stroke:black;stroke-width:1.5;fill:none"/>
+        <svg width="80" height="20">
+            <text x="50%" y="70%" text-anchor="middle" font-size="11">Fa0/7</text>
+        </svg>
+
+
+    </g>
+
+    <g transform="translate(619,249)">
+        <rect width="80" height="20" style="stroke:black;stroke-width:1.5;fill:none"/>
+        <svg width="80" height="20">
+            <text x="50%" y="70%" text-anchor="middle" font-size="11">Fa0/8</text>
+        </svg>
+
+
+        <g transform="translate(80,0)">
+            <line x1="0" y1="10" x2="300" y2="10" style="stroke:black;stroke-width:1.5"/>
+            <line x1="300" y1="10" x2="290" y2="5" style="stroke:black;stroke-width:1.5"/>
+            <line x1="300" y1="10" x2="290" y2="15" style="stroke:black;stroke-width:1.5"/>
+            <svg width="300" height="20">
+                <text x="2%" y="40%" text-anchor="start" font-size="11">ffftk</text>
+                <text x="95%" y="40%" text-anchor="end" font-size="11">951</text>
+            </svg>
+        </g>
+
+    </g>
+
+    <g transform="translate(619,269)">
+        <rect width="80" height="20" style="stroke:black;stroke-width:1.5;fill:none"/>
+        <svg width="80" height="20">
+            <text x="50%" y="70%" text-anchor="middle" font-size="11">Fa0/9</text>
+        </svg>
+
+
+        <g transform="translate(80,0)">
+            <line x1="0" y1="10" x2="300" y2="10" style="stroke:black;stroke-width:1.5"/>
+            <line x1="300" y1="10" x2="290" y2="5" style="stroke:black;stroke-width:1.5"/>
+            <line x1="300" y1="10" x2="290" y2="15" style="stroke:black;stroke-width:1.5"/>
+            <svg width="300" height="20">
+                <text x="2%" y="40%" text-anchor="start" font-size="11">rffdft-9</text>
+                <text x="95%" y="40%" text-anchor="end" font-size="11">903</text>
+            </svg>
+        </g>
+
+    </g>
+
+    <g transform="translate(619,289)">
+        <rect width="80" height="20" style="stroke:black;stroke-width:1.5;fill:none"/>
+        <svg width="80" height="20">
+            <text x="50%" y="70%" text-anchor="middle" font-size="11">Fa0/10</text>
+        </svg>
+
+
+    </g>
+
+    <g transform="translate(619,309)">
+        <rect width="80" height="20" style="stroke:black;stroke-width:1.5;fill:none"/>
+        <svg width="80" height="20">
+            <text x="50%" y="70%" text-anchor="middle" font-size="11">Fa0/11</text>
+        </svg>
+
+
+    </g>
+
+    <g transform="translate(619,329)">
+        <rect width="80" height="20" style="stroke:black;stroke-width:1.5;fill:none"/>
+        <svg width="80" height="20">
+            <text x="50%" y="70%" text-anchor="middle" font-size="11">Fa0/12</text>
+        </svg>
+
+
+    </g>
+
+    <g transform="translate(619,349)">
+        <rect width="80" height="20" style="stroke:black;stroke-width:1.5;fill:none"/>
+        <svg width="80" height="20">
+            <text x="50%" y="70%" text-anchor="middle" font-size="11">Fa0/13</text>
+        </svg>
+
+
+    </g>
+
+    <g transform="translate(619,369)">
+        <rect width="80" height="20" style="stroke:black;stroke-width:1.5;fill:none"/>
+        <svg width="80" height="20">
+            <text x="50%" y="70%" text-anchor="middle" font-size="11">Fa0/14</text>
+        </svg>
+
+
+    </g>
+
+    <g transform="translate(619,389)">
+        <rect width="80" height="20" style="stroke:black;stroke-width:1.5;fill:none"/>
+        <svg width="80" height="20">
+            <text x="50%" y="70%" text-anchor="middle" font-size="11">Fa0/15</text>
+        </svg>
+
+
+    </g>
+
+    <g transform="translate(619,409)">
+        <rect width="80" height="20" style="stroke:black;stroke-width:1.5;fill:none"/>
+        <svg width="80" height="20">
+            <text x="50%" y="70%" text-anchor="middle" font-size="11">Fa0/16</text>
+        </svg>
+
+
+    </g>
+
+    <g transform="translate(619,429)">
+        <rect width="80" height="20" style="stroke:black;stroke-width:1.5;fill:none"/>
+        <svg width="80" height="20">
+            <text x="50%" y="70%" text-anchor="middle" font-size="11">Fa0/17</text>
+        </svg>
+
+
+    </g>
+
+    <g transform="translate(619,449)">
+        <rect width="80" height="20" style="stroke:black;stroke-width:1.5;fill:none"/>
+        <svg width="80" height="20">
+            <text x="50%" y="70%" text-anchor="middle" font-size="11">Fa0/18</text>
+        </svg>
+
+
+    </g>
+
+    <g transform="translate(619,469)">
+        <rect width="80" height="20" style="stroke:black;stroke-width:1.5;fill:none"/>
+        <svg width="80" height="20">
+            <text x="50%" y="70%" text-anchor="middle" font-size="11">Fa0/19</text>
+        </svg>
+
+
+    </g>
+
+    <g transform="translate(619,489)">
+        <rect width="80" height="20" style="stroke:black;stroke-width:1.5;fill:none"/>
+        <svg width="80" height="20">
+            <text x="50%" y="70%" text-anchor="middle" font-size="11">Fa0/20</text>
+        </svg>
+
+
+    </g>
+
+    <g transform="translate(619,509)">
+        <rect width="80" height="20" style="stroke:black;stroke-width:1.5;fill:none"/>
+        <svg width="80" height="20">
+            <text x="50%" y="70%" text-anchor="middle" font-size="11">Fa0/21</text>
+        </svg>
+
+
+    </g>
+
+    <g transform="translate(619,529)">
+        <rect width="80" height="20" style="stroke:black;stroke-width:1.5;fill:none"/>
+        <svg width="80" height="20">
+            <text x="50%" y="70%" text-anchor="middle" font-size="11">Fa0/22</text>
+        </svg>
+
+
+    </g>
+
+    <g transform="translate(405,109)">
+        <rect width="214" height="860" style="stroke:black;stroke-width:1.5;fill:none"/>
+        <svg width="214" height="860">
+            <text x="50%" y="50%" text-anchor="middle" font-size="14">255.255.255.255</text>
+        </svg>
+    </g>
+</svg>

@@ -1,0 +1,69 @@
+Port Summary
+  Port  Display              VLAN Name          Port  Link  Speed Duplex
+  #     String               (or # VLANs)       State State Actual Actual
+  =======================================================================
+  1     mfff-10.3            (0005)              E     A     10G FULL
+  2     fds-35.3             VLAN0901            D     R
+  3     yyyyyx-46            VLAN0901            E     A     10G FULL
+  4                          VLAN0099            D     R
+  5     mmfsd-10.2           (0005)              E     A     10G FULL
+  6     sfdsfsf-8            VLAN0901            E     A     10G FULL
+  7     fsd-35.2             VLAN0901            D     R
+  8     ggggaa-12.2          VLAN0901            E     A     10G FULL
+  9     ggggaa-12.3          VLAN0901            E     A     10G FULL
+  10    vfsfssfe-4.2         VLAN0901            E     A     10G FULL
+  11    vfsfssfe-4.3         VLAN0901            E     A     10G FULL
+  12    mfff-9               VLAN0962            E     A     10G FULL
+  13    nfsfsfs-5            VLAN0901            E     A     10G FULL
+  14    ofdsfs               VLAN0901            E     A     10G FULL
+  15    mmmm-14              VLAN0963            E     A     10G FULL
+  16    mmmm-18              VLAN0901            E     A     10G FULL
+  17    mmmm-21              VLAN0960            E     A     10G FULL
+  18                         VLAN0099            D     R
+  19                         VLAN0099            D     R
+  20                         VLAN0099            D     R
+  21    mmmm-28              VLAN0964            E     A     10G FULL
+  22    illl-5               VLAN0901            E     A     10G FULL
+  23    affff-6              VLAN0901            E     A     10G FULL
+  24    mfff-10.4            (0005)              E     A     10G FULL
+  25    mfff-10.5            (0005)              E     A     10G FULL
+  26    mdfsssfs8            VLAN0901            D     R
+  27    vfsfssfe-4.4         VLAN0901            E     A     10G FULL
+  28    vfsfssfe-4.5         VLAN0901            E     A     10G FULL
+  29    sffsf02              VLAN0901            E     A     10G FULL
+  30    dfdfff-2             VLAN0901            D     R
+  31    ekt-rs1-span                             E     A     1000 FULL
+  32                         VLAN0099            D     R
+  33                         VLAN0099            D     R
+  34                         VLAN0099            D     R
+  35                         VLAN0099            D     R
+  36                         VLAN0099            D     R
+  37                         VLAN0099            D     R
+  38                         VLAN0099            D     R
+  39                         VLAN0099            D     R
+  40                         VLAN0099            D     R
+  41                         VLAN0099            D     R
+  42                         VLAN0099            D     R
+  43                         VLAN0099            D     R
+  44    ekt-s1=ekt-s13-6     (0003)              E     A     10G FULL
+  45    ekt-s1=ekt-s13-2     (0003)              E     A     10G FULL
+  46    ekt-s1=ekt-s13-3     (0003)              E     A     10G FULL
+  47    ekt-s1=ekt-s13-4     (0003)              E     A     10G FULL
+  48    ekt-s1=ekt-s13-5     (0003)              E     A     10G FULL
+  49                                             D     R
+  50                                             D     NP
+  51                                             D     NP
+  52                                             D     NP
+  53                                             D     R
+  54                                             D     NP
+  55                                             D     NP
+  56                                             D     NP
+  57                                             D     R
+  58                                             D     NP
+  59                                             D     NP
+  60                                             D     NP
+  61                                             D     R
+  62                                             D     NP
+  63                                             D     NP
+  64                                             D     NP
+  ==================================================================
