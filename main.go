@@ -19,6 +19,8 @@ import (
 
 const numberOfWorkers = 4
 
+// task contains output file, configuration and slice of input data
+// each task contains information to generate complete SVG document
 type task struct {
 	w             *os.File
 	configuration templates.Configuration
@@ -44,6 +46,7 @@ func defaultConfiguration() templates.Configuration {
 	}
 }
 
+// writeSVG split data into slices acording to configuration and supply tasks to workers
 func writeSVG(data device.Data, configuration templates.Configuration) error {
 	var (
 		top    = configuration.Padding[0] + configuration.Title.FontSize + 50
@@ -74,7 +77,7 @@ func writeSVG(data device.Data, configuration templates.Configuration) error {
 			exit = true
 		}
 		records := data.Records[start:end]
-		w, err := os.Create(fmt.Sprintf("output#%s#%d.svg", t.Format("20060102150405"), i))
+		w, err := os.Create(fmt.Sprintf("%s#%s#%d.svg", data.Id, t.Format("20060102150405"), i))
 		if err != nil {
 			return err
 		}
@@ -93,6 +96,8 @@ func writeSVG(data device.Data, configuration templates.Configuration) error {
 	return nil
 }
 
+// execer reads tasks from input channel and creates SVG document from template.
+// For more information about template see https://github.com/valyala/quicktemplate
 func execer(tasks <-chan task) {
 	for t := range tasks {
 		configuration := t.configuration
